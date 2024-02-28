@@ -3,6 +3,7 @@ const apiUrl = "https://api.openweathermap.org/data/2.5/weather?units=metric&q="
 
 const searchBox = document.querySelector(".search input");
 const searchBtn = document.querySelector(".search button");
+const watherIcon = document.querySelector(".wather-icon");
 
 
 async function checkWeather(city){
@@ -17,9 +18,22 @@ async function checkWeather(city){
     document.querySelector(".wind").innerHTML = data.wind.speed +  " km/h";
 
     if(data.weather[0].main == "Clouds"){
-        
+        watherIcon.src = "images/clouds.png";
+    }
+    else if(data.weather[0].main == "Clear"){
+        watherIcon.src = "images/clear.png";
+    }
+    else if(data.weather[0].main == "Rain"){
+        watherIcon.src = "images/rain.png";
+    }
+    else if(data.weather[0].main == "Drizzle"){
+        watherIcon.src = "images/drizzle.png";
+    }
+    else if(data.weather[0].main == "Mist"){
+        watherIcon.src = "images/mist.png";
     }
     
+    document.querySelector(".weather").style.display = "block"
 
 }
 searchBtn.addEventListener("click", ()=>{
